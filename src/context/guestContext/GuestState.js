@@ -48,11 +48,11 @@ const GuestState = (props) => {
             type:TOGGLE_FILTER
         })
     }
-    console.log(state.filterGuest)
     return (
             <GuestContext.Provider
             value = {{
                 guests: state.guests,
+                filterGuest: state.filterGuest,
                 toggleFilter
             }}
             >{props.children}</GuestContext.Provider>
