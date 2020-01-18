@@ -1,9 +1,13 @@
 import React,{useReducer} from 'react'
 import GuestContext from './guestContext'
 import guestReducer from './guestReducer'
+import {
+    TOGGLE_FILTER
+} from './../types'
 
 const GuestState = (props) => {
     const initialState ={
+        filterGuest:false,
         guests:[
             {
                 id: 1,
@@ -36,10 +40,20 @@ const GuestState = (props) => {
         ]
     }
     const [state, dispatch] = useReducer(guestReducer, initialState)
+
+    // to create action
+
+    const toggleFilter = ()=>{
+        dispatch({
+            type:TOGGLE_FILTER
+        })
+    }
+    console.log(state.filterGuest)
     return (
             <GuestContext.Provider
             value = {{
-                guests: state.guests
+                guests: state.guests,
+                toggleFilter
             }}
             >{props.children}</GuestContext.Provider>
     )
