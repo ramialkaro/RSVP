@@ -3,6 +3,7 @@ import GuestsForm from '../guests/GuestsForm'
 import GuestCounter from '../guests/GuestCounter'
 import GuestFilter from '../guests/GuestFilter'
 import GuestSearch from '../guests/GuestSearch'
+import Guests from '../guests/Guests'
 
  const Home = () => {
     return (
@@ -15,6 +16,7 @@ import GuestSearch from '../guests/GuestSearch'
                 <GuestsForm/>
                 <GuestCounter/>
             </div>
+            <Guests/>
         </div>
     )
 }
