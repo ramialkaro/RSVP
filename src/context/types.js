@@ -11,3 +11,7 @@ export const REMOVE_GUEST = 'REMOVE_GUEST'
 
 //update guest type
 export const UPDATE_GUEST = 'UPDATE_GUEST'
+
+//edit guest type
+export const EDIT_GUEST = 'EDIT_GUEST'
+export const CLEAR_EDIT = 'CLEAR_EDIT'

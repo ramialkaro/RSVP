@@ -4,7 +4,9 @@ import {
     CLEAR_SEARCH,
     ADD_GUEST,
     REMOVE_GUEST,
-    UPDATE_GUEST
+    UPDATE_GUEST,
+    EDIT_GUEST,
+    CLEAR_EDIT
 } from './../types'
 
 export default (state, {type,payload})=>{
@@ -23,6 +25,16 @@ export default (state, {type,payload})=>{
             return{
                 ...state,
                 guests: state.guests.map(guest=> guest.id === payload.id ? payload : guest)
+            }
+        case EDIT_GUEST:
+            return{
+                ...state,
+                editAble: payload
+            }
+        case CLEAR_EDIT:
+            return{
+                ...state,
+                editAble:null
             }
         case SEARCH_GUEST:
             const reg = new RegExp(`${payload}`, 'gi')
