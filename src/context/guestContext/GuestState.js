@@ -5,7 +5,8 @@ import {
     TOGGLE_FILTER,
     SEARCH_GUEST,
     CLEAR_SEARCH,
-    ADD_GUEST
+    ADD_GUEST,
+    REMOVE_GUEST
 } from './../types'
 
 const GuestState = (props) => {
@@ -45,6 +46,7 @@ const GuestState = (props) => {
     }
     const [state, dispatch] = useReducer(guestReducer, initialState)
     
+    //add guest
     const addGuest =(guest)=>{
         guest.id = Date.now()
         guest.isconfirmed = false
@@ -54,6 +56,13 @@ const GuestState = (props) => {
         })
     }
 
+    // remove guest
+    const removeGuest =(id)=>{
+        dispatch({
+            type: REMOVE_GUEST,
+            payload:id
+        })
+    }
     // to create action
 
     const toggleFilter = ()=>{
@@ -80,6 +89,7 @@ const GuestState = (props) => {
                 toggleFilter,
                 search:state.search,
                 addGuest,
+                removeGuest,
                 searchGuest,
                 clearSearch
             }}
