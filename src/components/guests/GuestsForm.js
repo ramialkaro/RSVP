@@ -3,7 +3,7 @@ import React,{useState, useContext, useEffect} from 'react'
 import GuestContext from "../../context/guestContext/guestContext";
 
 const GuestForm = () => {
-  const {addGuest, editAble} = useContext(GuestContext)
+  const {addGuest, editAble, updateGuest, clearEdit} = useContext(GuestContext)
   useEffect(()=>{
     if(editAble !==null){
       setGuest(editAble)
@@ -33,12 +33,18 @@ const GuestForm = () => {
 
   const handleSumbit=e=>{
     e.preventDefault()
+    //check if we have already guest so need to update it 
+    if(editAble !==null){
+      updateGuest(guest)
+      clearEdit()
+    }else{
     addGuest(guest)
      setGuest({
       name:'',
       phone:'',
       dietary:'Non-Veg'
     })
+  }
   }
   
   return (
