@@ -49,7 +49,7 @@ const GuestForm = () => {
   
   return (
     <div className="invite-section">
-      <h1>Invite Someone</h1>
+    <h1>{editAble !==null ? 'Edit Guest':'Invite Someone'}</h1>
       <form onSubmit={handleSumbit}>
         <input type="text" placeholder="Name" name="name" value={name} onChange={handleChange}/>
         <input type="text" placeholder="Phone" name="phone" value={phone} onChange={handleChange}/>
@@ -68,7 +68,8 @@ const GuestForm = () => {
             <span className="checkmark"></span>
           </label>
         </div>
-        <input type="submit" value="Add Guest" className="btn" />
+        <input type="submit" value={editAble !==null ? 'Update Guest': 'Add Guest'} className="btn" />
+        {editAble!==null ? <input onClick={clearEdit}  value="Cancel" type="button" className="btn clear" />: null}
       </form>
     </div>
   )
