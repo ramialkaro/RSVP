@@ -1,7 +1,9 @@
  
-import React,{useState} from 'react'
+import React,{useState, useContext} from 'react'
+import GuestContext from "../../context/guestContext/guestContext";
 
 const GuestForm = () => {
+  const {addGuest} = useContext(GuestContext)
   const [guest, setGuest] = useState({
     name:'',
     phone:'',
@@ -19,8 +21,8 @@ const GuestForm = () => {
 
   const handleSumbit=e=>{
     e.preventDefault()
-    console.log(guest)
-    setGuest({
+    addGuest(guest)
+     setGuest({
       name:'',
       phone:'',
       dietary:'Non-Veg'
