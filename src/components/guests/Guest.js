@@ -2,11 +2,16 @@ import React,{useContext} from 'react'
 import GuestContext from '../../context/guestContext/guestContext'
 
 const Guest = ({guest}) => {
-    const {removeGuest} = useContext(GuestContext)
+    const {removeGuest, updateGuest} = useContext(GuestContext)
     const {id, name, phone, dietary, isconfirmed}= guest
-
+    //handle remove
     const handleRemove=()=>{
         removeGuest(id)
+    }
+
+    //is confirmed handler
+    const handleIsConfirmed=()=>{
+        updateGuest({...guest, isconfirmed: !isconfirmed})
     }
     return (
         <div className="guest-card">
@@ -14,7 +19,7 @@ const Guest = ({guest}) => {
                 <div>
                     <label className={`${isconfirmed && 'confirm'}`}>Confirmed
                         <i className={`fas fa-check-square ${isconfirmed && 'confirm'}`}>
-                            <input type="checkbox"/>
+                            <input type="checkbox" onChange={handleIsConfirmed}/>
                         </i>
                     </label>
                 </div>

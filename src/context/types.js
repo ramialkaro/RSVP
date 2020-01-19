@@ -10,3 +10,4 @@ export const ADD_GUEST = 'ADD_GUEST'
 export const REMOVE_GUEST = 'REMOVE_GUEST'
 
 //update guest type
+export const UPDATE_GUEST = 'UPDATE_GUEST'

@@ -6,7 +6,8 @@ import {
     SEARCH_GUEST,
     CLEAR_SEARCH,
     ADD_GUEST,
-    REMOVE_GUEST
+    REMOVE_GUEST,
+    UPDATE_GUEST
 } from './../types'
 
 const GuestState = (props) => {
@@ -63,6 +64,14 @@ const GuestState = (props) => {
             payload:id
         })
     }
+
+    //update guest
+    const updateGuest =(guest)=>{
+        dispatch({
+            type:UPDATE_GUEST,
+            payload:guest
+        })
+    }
     // to create action
 
     const toggleFilter = ()=>{
@@ -90,6 +99,7 @@ const GuestState = (props) => {
                 search:state.search,
                 addGuest,
                 removeGuest,
+                updateGuest,
                 searchGuest,
                 clearSearch
             }}
