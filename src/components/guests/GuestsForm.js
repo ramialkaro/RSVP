@@ -1,18 +1,27 @@
  
-import React,{useState, useContext} from 'react'
+import React,{useState, useContext, useEffect} from 'react'
 import GuestContext from "../../context/guestContext/guestContext";
 
 const GuestForm = () => {
   const {addGuest, editAble} = useContext(GuestContext)
+  useEffect(()=>{
+    if(editAble !==null){
+      setGuest(editAble)
+    } else{
+      setGuest({
+        name:'',
+        phone:'',
+        dietary:'Non-Veg'
+      })
+    }
+  },[editAble])
   const [guest, setGuest] = useState({
     name:'',
     phone:'',
     dietary:'Non-Veg'
   })
 
-  if(editAble !==null){
-    console.log(editAble)
-  }
+
   const  {name, phone, dietary} = guest
 
   const handleChange=e=>{
@@ -45,11 +54,11 @@ const GuestForm = () => {
             <span className="checkmark"></span>
           </label>
           <label className="container">Vegan
-        <input type="radio" name="dietary" value='Vegan' onChange={handleChange}/>
+        <input type="radio" name="dietary" value='Vegan' checked={dietary==='Vegan'} onChange={handleChange}/>
             <span className="checkmark"></span>
           </label>
           <label className="container">Pescetarian
-        <input type="radio" name="dietary" value='Pescetarian' onChange={handleChange}/>
+        <input type="radio" name="dietary" value='Pescetarian' checked={dietary==='Pescetarian'} onChange={handleChange}/>
             <span className="checkmark"></span>
           </label>
         </div>
